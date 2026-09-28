@@ -543,10 +543,16 @@ export default function App() {
             </div>
 
             <div className="contact-item">
-              <span className="contact-item-icon">💼</span>
-              <h4>Corporate Desk</h4>
-              <p>GST invoices, bulk discount tiers & custom branding</p>
-              <a href="tel:+919876543211">+91 93304 53857</a>
+              <span className="contact-item-icon">📸</span>
+              <h4>Instagram</h4>
+              <p>Follow us for gifting inspiration & updates</p>
+              <a
+                href="https://www.instagram.com/_house_of_gifts__/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                @_house_of_gifts__
+              </a>
             </div>
 
             <div className="contact-item">
