@@ -4,6 +4,7 @@ import "./App.css";
 /* ─── Types ─────────────────────────────────────────── */
 export type Product = {
   id: string;
+  number: number;
   category: "Hampers";
   name: string;
   price: string;
@@ -26,6 +27,7 @@ const getImg = (name: string) => productImages[`./assets/house_media/${name}`];
 const HAMPERS: Product[] = [
   {
     id: "h-1",
+    number: 1,
     category: "Hampers",
     name: "Hamper 1",
     price: "₹650",
@@ -37,6 +39,7 @@ const HAMPERS: Product[] = [
   },
   {
     id: "h-2",
+    number: 2,
     category: "Hampers",
     name: "Hamper 2",
     price: "₹650",
@@ -48,6 +51,7 @@ const HAMPERS: Product[] = [
   },
   {
     id: "h-3",
+    number: 3,
     category: "Hampers",
     name: "Hamper 3",
     price: "₹850",
@@ -59,6 +63,7 @@ const HAMPERS: Product[] = [
   },
   {
     id: "h-4",
+    number: 4,
     category: "Hampers",
     name: "Hamper 4",
     price: "₹1,050",
@@ -70,6 +75,7 @@ const HAMPERS: Product[] = [
   },
   {
     id: "h-5",
+    number: 5,
     category: "Hampers",
     name: "Hamper 5",
     price: "₹1,050",
@@ -81,6 +87,7 @@ const HAMPERS: Product[] = [
   },
   {
     id: "h-6",
+    number: 6,
     category: "Hampers",
     name: "Hamper 6",
     price: "₹1,200",
@@ -92,6 +99,7 @@ const HAMPERS: Product[] = [
   },
   {
     id: "h-7",
+    number: 7,
     category: "Hampers",
     name: "Hamper 7",
     price: "₹1,500",
@@ -103,6 +111,7 @@ const HAMPERS: Product[] = [
   },
   {
     id: "h-8",
+    number: 8,
     category: "Hampers",
     name: "Hamper 8",
     price: "₹1,500",
@@ -114,6 +123,7 @@ const HAMPERS: Product[] = [
   },
   {
     id: "h-9",
+    number: 9,
     category: "Hampers",
     name: "Hamper 9",
     price: "₹1,500",
@@ -125,6 +135,7 @@ const HAMPERS: Product[] = [
   },
   {
     id: "h-10",
+    number: 10,
     category: "Hampers",
     name: "Hamper 10",
     price: "₹1,550",
@@ -136,6 +147,7 @@ const HAMPERS: Product[] = [
   },
   {
     id: "h-11",
+    number: 11,
     category: "Hampers",
     name: "Hamper 11",
     price: "₹1,800",
@@ -147,6 +159,7 @@ const HAMPERS: Product[] = [
   },
   {
     id: "h-12",
+    number: 12,
     category: "Hampers",
     name: "Hamper 12",
     price: "₹2,050",
@@ -158,6 +171,7 @@ const HAMPERS: Product[] = [
   },
   {
     id: "h-13",
+    number: 13,
     category: "Hampers",
     name: "Hamper 13",
     price: "₹3,500",
@@ -170,19 +184,14 @@ const HAMPERS: Product[] = [
 ];
 
 /* ─── WhatsApp helper ────────────────────────────────── */
-const WHATSAPP_PHONE = "919876543210";
+const WHATSAPP_PHONE = "919330453857";
 
 function createWhatsAppLink(product?: Product) {
-  if (!product) {
-    const text = encodeURIComponent(
-      "Hello The House of Gifts! I am browsing your Diwali 2026 Catalogue and would like to enquire about festive gifting options."
-    );
-    return `https://wa.me/${WHATSAPP_PHONE}?text=${text}`;
-  }
-  const text = encodeURIComponent(
-    `Hello The House of Gifts!\n\nI am interested in ordering / enquiring about:\n• Product: ${product.name}\n• Category: ${product.category}\n• Price: ${product.price}\n• Minimum Order: ${product.moq}\n\nPlease share availability, bulk pricing, and dispatch details.`
-  );
-  return `https://wa.me/${WHATSAPP_PHONE}?text=${text}`;
+  const message = product
+    ? `Hi, I would like to enquire about hamper number ${product.number}.`
+    : "Hello The House of Gifts! I am browsing your Diwali 2026 Catalogue and would like to enquire about festive gifting options.";
+  const params = new URLSearchParams({ phone: WHATSAPP_PHONE, text: message });
+  return `https://api.whatsapp.com/send?${params.toString()}`;
 }
 
 /* ─── Carousel Component ─────────────────────────────── */
