@@ -4,7 +4,7 @@ import "./App.css";
 /* ─── Types ─────────────────────────────────────────── */
 export type Product = {
   id: string;
-  category: "Hampers" | "Gifts";
+  category: "Hampers";
   name: string;
   price: string;
   moq: string;
@@ -15,293 +15,157 @@ export type Product = {
 };
 
 /* ─── Media Resolver ────────────────────────────────── */
-const BASE = "/src/assets/house_media/";
-const getImg = (name: string) => `${BASE}${encodeURIComponent(name)}`;
+const productImages = import.meta.glob<string>("./assets/house_media/diwali-hamper-*.jpg", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
+const getImg = (name: string) => productImages[`./assets/house_media/${name}`];
 
 /* ─── Products Data ─────────────────────────────────── */
 const HAMPERS: Product[] = [
   {
     id: "h-1",
     category: "Hampers",
-    name: "The Royal Silver Thali Hamper",
-    price: "₹4,499",
-    moq: "5 units",
-    tag: "Imperial Signature",
-    description:
-      "An imperial silver-filigree celebration thali adorned with multi-wick scented floral candle, pure silk brocade dry-fruit potlis, artisan hazelnut pralines, and fragrant dried rose petals.",
-    details: [
-      "Artisan handcrafted silver filigree thali",
-      "3 Silk brocade potlis with jumbo Mamra nuts",
-      "Box of gold-foiled Belgian hazelnut pralines",
-      "Centerpiece aroma candle with brass accents",
-      "Handwritten wax-sealed Diwali greeting card",
-    ],
-    image: getImg("WhatsApp Image 2026-09-18 at 2.04.18 AM (1).jpeg"),
+    name: "Hamper 1",
+    price: "₹650",
+    moq: "50 pcs",
+    tag: "Diwali Hamper",
+    description: "Cashews, almonds, cookies, an urli candle, and chocolates.",
+    details: ["200g cashews", "200g almonds", "Cookies", "Urli candle", "6 chocolates"],
+    image: getImg("diwali-hamper-01.jpg"),
   },
   {
     id: "h-2",
     category: "Hampers",
-    name: "The Maharaja Festive Casket",
-    price: "₹3,199",
-    moq: "10 units",
-    tag: "Best Seller",
-    description:
-      "An ornate Persian teal & gold motif treasure chest containing Californian almonds, whole cashews, salted pistachios, and gold-dusted chocolate spheres.",
-    details: [
-      "Reusable keepsake designer embossed tin",
-      "600g premium imported graded dry fruits",
-      "Handcrafted golden chocolate truffles",
-      "Pure brass diya included",
-      "Diwali festive certification card",
-    ],
-    image: getImg("WhatsApp Image 2026-09-18 at 2.04.18 AM.jpeg"),
+    name: "Hamper 2",
+    price: "₹650",
+    moq: "50 pcs",
+    tag: "Diwali Hamper",
+    description: "Cashews, almonds, a candle, chocolates, and dhoop cones.",
+    details: ["100g cashews", "100g almonds", "Candle", "6 chocolates", "Dhoop cones"],
+    image: getImg("diwali-hamper-02.jpg"),
   },
   {
     id: "h-3",
     category: "Hampers",
-    name: "The Sovereign Mithai & Dry Fruit Trunk",
-    price: "₹3,799",
-    moq: "8 units",
-    tag: "Grand Trunk",
-    description:
-      "A handcrafted royal trunk featuring tiered compartments of gourmet roasted nuts, silver-foiled artisan mithai, and a pair of solid brass oil lamps.",
-    details: [
-      "Engraved reusable wooden trunk with brass latch",
-      "Artisanal saffron & pistachio sweets",
-      "Irani pistachios & Mamra almonds",
-      "Pair of traditional hand-carved brass diyas",
-      "Custom corporate brass plaque available",
-    ],
-    image: getImg("WhatsApp Image 2026-09-18 at 2.04.19 AM (8).jpeg"),
+    name: "Hamper 3",
+    price: "₹850",
+    moq: "50 pcs",
+    tag: "Diwali Hamper",
+    description: "Cashews, almonds, a candle, and chocolates.",
+    details: ["200g cashews", "200g almonds", "Candle", "6 chocolates"],
+    image: getImg("diwali-hamper-03.jpg"),
   },
   {
     id: "h-4",
     category: "Hampers",
-    name: "The Shahi Noor Celebration Hamper",
-    price: "₹3,499",
-    moq: "6 units",
-    tag: "Limited Reserve",
-    description:
-      "A majestic hamper pairing dark cocoa pralines, exotic trail mix, a pure brass lotus diya, and organic wild forest honey with wooden dipper.",
-    details: [
-      "Pure brass lotus flower diya",
-      "Organic wild forest honey jar with dipper",
-      "Artisanal 70% dark chocolates",
-      "Rich Turkish figs & walnut halves",
-      "Royal satin ribbon & embossed gold seal",
-    ],
-    image: getImg("WhatsApp Image 2026-09-18 at 2.04.19 AM (2).jpeg"),
+    name: "Hamper 4",
+    price: "₹1,050",
+    moq: "50 pcs",
+    tag: "Diwali Hamper",
+    description: "Cashews, almonds, and a candle.",
+    details: ["200g cashews", "200g almonds", "Candle"],
+    image: getImg("diwali-hamper-04.jpg"),
   },
   {
     id: "h-5",
     category: "Hampers",
-    name: "The Marigold Heritage Basket",
-    price: "₹2,899",
-    moq: "10 units",
-    tag: "Festive Classic",
-    description:
-      "Woven luxury hamper packed with pure desi ghee savouries, hand-rolled kaju sweets, roasted macadamias, and aromatic saffron incense cones.",
-    details: [
-      "Eco-luxe woven storage basket with lid",
-      "Pure desi ghee sweets (zero preservatives)",
-      "Botanical dhoop cones with brass burner",
-      "Handcrafted festive silk tassel adornment",
-      "Doorstep pan-India express dispatch",
-    ],
-    image: getImg("WhatsApp Image 2026-09-18 at 2.04.19 AM (1).jpeg"),
+    name: "Hamper 5",
+    price: "₹1,050",
+    moq: "50 pcs",
+    tag: "Diwali Hamper",
+    description: "Cashews, almonds, and a candle.",
+    details: ["200g cashews", "200g almonds", "Candle"],
+    image: getImg("diwali-hamper-05.jpg"),
   },
   {
     id: "h-6",
     category: "Hampers",
-    name: "The Amber Royale Corporate Hamper",
-    price: "₹2,599",
-    moq: "15 units",
-    tag: "Corporate Choice",
-    description:
-      "Sleek and opulent presentation crafted for esteemed colleagues and clients, including airtight gourmet dry fruit jars, roasted seeds, and celebratory scented tea-lights.",
-    details: [
-      "Dual airtight crystal-glass jars",
-      "Custom corporate logo belly-band & card",
-      "Gold-foiled rigid luxury gift box",
-      "GST invoice provided with bulk orders",
-      "Individual multi-address shipping support",
-    ],
-    image: getImg("WhatsApp Image 2026-09-18 at 2.04.19 AM (3).jpeg"),
+    name: "Hamper 6",
+    price: "₹1,200",
+    moq: "50 pcs",
+    tag: "Diwali Hamper",
+    description: "Cashews, almonds, a candle, and chocolates.",
+    details: ["200g cashews", "200g almonds", "Candle", "8 chocolates"],
+    image: getImg("diwali-hamper-06.jpg"),
   },
   {
     id: "h-7",
     category: "Hampers",
-    name: "The Jewel of Ayodhya Hamper",
-    price: "₹4,999",
-    moq: "3 units",
-    tag: "Connoisseur",
-    description:
-      "The pinnacle of Diwali hospitality — pure Kashmiri saffron, silver-coated cardamom, organic wild honey, Iranian dates, and hand-chiseled brass diyas.",
-    details: [
-      "1g Pure Kashmir Saffron (Mongra Grade)",
-      "Solid brass hand-carved diya pair",
-      "Stuffed Medjool dates with roasted almond",
-      "Velvet-lined royal festive presentation box",
-      "Personalized laser-engraved greeting message",
-    ],
-    image: getImg("WhatsApp Image 2026-09-18 at 2.04.19 AM (4).jpeg"),
+    name: "Hamper 7",
+    price: "₹1,500",
+    moq: "50 pcs",
+    tag: "Diwali Hamper",
+    description: "Cashews, almonds, a candle, and chocolates.",
+    details: ["200g cashews", "200g almonds", "Candle", "8 chocolates"],
+    image: getImg("diwali-hamper-07.jpg"),
   },
   {
     id: "h-8",
     category: "Hampers",
-    name: "The Rangoli Festive Hamper",
-    price: "₹2,199",
-    moq: "15 units",
-    tag: "Popular",
-    description:
-      "Festive celebration box showcasing vibrant Indian rangoli motifs, assorted traditional namkeens, cashew bites, and festive decorative tealights.",
-    details: [
-      "Artistic rangoli keepsake lid",
-      "4 assorted gourmet dry fruits & savory treats",
-      "Set of 4 hand-poured festive tealights",
-      "Diwali festival note card with envelope",
-    ],
-    image: getImg("WhatsApp Image 2026-09-18 at 2.04.19 AM (5).jpeg"),
-  },
-];
-
-const GIFTS: Product[] = [
-  {
-    id: "g-1",
-    category: "Gifts",
-    name: "The Golden Noor Mithai Box",
-    price: "₹1,699",
-    moq: "10 units",
-    tag: "Artisan Mithai",
-    description:
-      "A luxurious 9-compartment gold-lacquered box featuring gold-leafed pistachio squares, rose petal chocolates, a hand-cast brass tealight, and dual glass jars of whole cashews and roasted almonds.",
-    details: [
-      "9-section artisan keepsake gift tray",
-      "Hand-cast brass center tealight candle",
-      "Dual airtight glass dry fruit jars",
-      "Gold foil geometric Indian motif box",
-      "100% vegetarian & freshly prepared",
-    ],
-    image: getImg("WhatsApp Image 2026-09-18 at 2.04.19 AM (10).jpeg"),
+    name: "Hamper 8",
+    price: "₹1,500",
+    moq: "50 pcs",
+    tag: "Diwali Hamper",
+    description: "Cashews, almonds, pistachios, and chocolates.",
+    details: ["200g cashews", "200g almonds", "200g pistachios", "6 chocolates"],
+    image: getImg("diwali-hamper-08.jpg"),
   },
   {
-    id: "g-2",
-    category: "Gifts",
-    name: "The Artisanal Couverture Gift Box",
-    price: "₹1,499",
-    moq: "12 units",
-    tag: "Chocolatier",
-    description:
-      "Handcrafted Belgian chocolates infused with Kashmiri saffron, roasted almond slivers, salted caramel, and rose ganache in a velvet-finish box.",
-    details: [
-      "16-piece gourmet festive chocolate selection",
-      "Single-origin Belgian chocolate couverture",
-      "Festive edible gold dust garnish",
-      "Insulated temperature-controlled dispatch",
-    ],
-    image: getImg("WhatsApp Image 2026-09-18 at 2.04.19 AM (6).jpeg"),
+    id: "h-9",
+    category: "Hampers",
+    name: "Hamper 9",
+    price: "₹1,500",
+    moq: "50 pcs",
+    tag: "Diwali Hamper",
+    description: "Cashews, almonds, pistachios, and chocolates.",
+    details: ["200g cashews", "200g almonds", "200g pistachios", "6 chocolates"],
+    image: getImg("diwali-hamper-09.jpg"),
   },
   {
-    id: "g-3",
-    category: "Gifts",
-    name: "The Saffron & Almond Heritage Casket",
-    price: "₹1,899",
-    moq: "8 units",
-    tag: "Signature Gift",
-    description:
-      "Glass jars of handpicked Mamra almonds and golden Kashmiri saffron strands presented in an emerald and gold foiled festive keepsake casket.",
-    details: [
-      "Pure Kashmiri Mongra Saffron (1g)",
-      "Grade-A handpicked Mamra Almonds (250g)",
-      "Gold metal screw-cap airtight jars",
-      "Includes festive culinary recipe card",
-    ],
-    image: getImg("WhatsApp Image 2026-09-18 at 2.04.19 AM (7).jpeg"),
+    id: "h-10",
+    category: "Hampers",
+    name: "Hamper 10",
+    price: "₹1,550",
+    moq: "50 pcs",
+    tag: "Diwali Hamper",
+    description: "Cashews, almonds, an urli candle, dhoop cones, and chocolates.",
+    details: ["200g cashews", "200g almonds", "Urli candle", "Dhoop cones", "6 chocolates"],
+    image: getImg("diwali-hamper-10.jpg"),
   },
   {
-    id: "g-4",
-    category: "Gifts",
-    name: "The Brass Diya & Sacred Dhoop Set",
-    price: "₹1,299",
-    moq: "15 units",
-    tag: "Sacred Festive",
-    description:
-      "Traditional hand-cast solid brass diyas paired with botanical herbal dhoop cones and pure cow ghee wicks for an auspicious Diwali pooja.",
-    details: [
-      "Solid pure brass diya (lifetime keepsake)",
-      "Pure botanical herbal incense with brass stand",
-      "Cotton organic ghee wicks gift pack",
-      "Auspicious festive gold-stamped packaging",
-    ],
-    image: getImg("WhatsApp Image 2026-09-18 at 2.04.19 AM (9).jpeg"),
+    id: "h-11",
+    category: "Hampers",
+    name: "Hamper 11",
+    price: "₹1,800",
+    moq: "50 pcs",
+    tag: "Diwali Hamper",
+    description: "Cashews, almonds, and a candle.",
+    details: ["200g cashews", "200g almonds", "Candle"],
+    image: getImg("diwali-hamper-11.jpg"),
   },
   {
-    id: "g-5",
-    category: "Gifts",
-    name: "The Festive Dry Fruit Quartet",
-    price: "₹1,599",
-    moq: "10 units",
-    tag: "Healthy Luxury",
-    description:
-      "Four sealed compartments containing smoked Californian almonds, salted whole cashews, Afghan green raisins, and Turkish sun-dried apricots.",
-    details: [
-      "400g net weight premium dry fruits",
-      "Foil-sealed freshness guarantee",
-      "Reusable partition tray with clear acrylic lid",
-      "Hand-tied festive gold ribbon bow",
-    ],
-    image: getImg("WhatsApp Image 2026-09-18 at 2.04.19 AM (11).jpeg"),
+    id: "h-12",
+    category: "Hampers",
+    name: "Hamper 12",
+    price: "₹2,050",
+    moq: "50 pcs",
+    tag: "Diwali Hamper",
+    description: "Cashews, almonds, pistachios, and chocolates.",
+    details: ["200g cashews", "200g almonds", "200g pistachios", "6 chocolates"],
+    image: getImg("diwali-hamper-12.jpg"),
   },
   {
-    id: "g-6",
-    category: "Gifts",
-    name: "The Velvet Charm Keepsake Box",
-    price: "₹1,799",
-    moq: "10 units",
-    tag: "Bespoke",
-    description:
-      "Royal deep crimson velvet box with custom gold foil crest, enclosing artisanal cashew burfi, roasted hazelnut dragees, and an aromatic soy wax candle.",
-    details: [
-      "Plush velvet touch presentation box",
-      "Hand-poured warm amber soy candle",
-      "Artisan confection duo with gold foil",
-      "Customizable festive note card included",
-    ],
-    image: getImg("WhatsApp Image 2026-09-18 at 2.04.19 AM (12).jpeg"),
-  },
-  {
-    id: "g-7",
-    category: "Gifts",
-    name: "The Diya & Sweet Harmony Box",
-    price: "₹1,199",
-    moq: "20 units",
-    tag: "Festive Essential",
-    description:
-      "A delightful compact Diwali gift featuring terracotta hand-painted diyas, assorted miniature dry fruit sweet bites, and a celebratory greeting note.",
-    details: [
-      "Pair of hand-painted terracotta diyas",
-      "Individually sealed gourmet mithai bites",
-      "Ideal for team, family & guest gifting",
-      "Prompt express delivery across India",
-    ],
-    image: getImg("WhatsApp Image 2026-09-18 at 2.04.19 AM (13).jpeg"),
-  },
-  {
-    id: "g-8",
-    category: "Gifts",
-    name: "The Celestial Dry Fruit Duo",
-    price: "₹999",
-    moq: "25 units",
-    tag: "Corporate Value",
-    description:
-      "Two airtight crystal jars of jumbo cashews and roasted almonds housed in a sleek navy and gold geometric festive gift box.",
-    details: [
-      "Twin 200g jars (Cashews & Almonds)",
-      "Custom branded sleeve option for bulk orders",
-      "Pre-tied satin ribbon finish",
-      "Corporate GST invoicing available",
-    ],
-    image: getImg("WhatsApp Image 2026-09-18 at 2.04.19 AM (14).jpeg"),
+    id: "h-13",
+    category: "Hampers",
+    name: "Hamper 13",
+    price: "₹3,500",
+    moq: "50 pcs",
+    tag: "Diwali Hamper",
+    description: "Cashews, almonds, pistachios, and chocolates.",
+    details: ["200g cashews", "200g almonds", "200g pistachios", "6 chocolates"],
+    image: getImg("diwali-hamper-13.jpg"),
   },
 ];
 
@@ -491,7 +355,6 @@ export default function App() {
         <nav className="header-nav">
           <a href="#collections">Collections</a>
           <a href="#hampers">Hampers</a>
-          <a href="#gifts">Gifts</a>
           <a href="#contact">Concierge & Contact</a>
         </nav>
 
@@ -523,10 +386,9 @@ export default function App() {
             </h1>
 
             <p className="hero-subtext">
-              Welcome to our 2026 Diwali Product Catalogue. Discover thoughtfully
-              assembled festive hampers, artisanal sweets, gourmet dry fruits, and
-              hand-cast brass keepsakes — curated exclusively for bespoke personal
-              and corporate gifting.
+              Explore 13 thoughtfully assembled Diwali hampers featuring dry
+              fruits, chocolates, candles, and festive treats. Each hamper has a
+              minimum order of 50 pieces.
             </p>
 
             <div className="hero-actions">
@@ -564,13 +426,13 @@ export default function App() {
             <div className="hero-image-aura" aria-hidden="true" />
             <div className="hero-image-container">
               <img
-                src={getImg("WhatsApp Image 2026-09-18 at 2.04.18 AM (1).jpeg")}
-                alt="Diwali Signature Silver Thali Hamper with Lit Floral Candle"
+                src={getImg("diwali-hamper-01.jpg")}
+                alt="Hamper 1 with cashews, almonds, cookies, an urli candle, and chocolates"
                 className="hero-main-img"
               />
               <div className="hero-image-overlay">
-                <span className="hero-caption-title">The Royal Silver Thali Edition</span>
-                <span className="hero-caption-sub">Featured 2026 Masterpiece</span>
+                <span className="hero-caption-title">Hamper 1</span>
+                <span className="hero-caption-sub">From ₹650 · Minimum 50 pieces</span>
               </div>
               <div className="hero-floating-badge">
                 <span>🪔 Curated for Diwali</span>
@@ -582,27 +444,27 @@ export default function App() {
         {/* Ambient Marquee Ribbon */}
         <div className="diwali-ribbon">
           <div className="diwali-ribbon-track">
-            <span>🪔 BESPOKE FESTIVE HAMPERS</span>
+            <span>🪔 13 DIWALI HAMPERS</span>
             <span className="ribbon-sep">✦</span>
-            <span>PURE GHEE ARTISAN MITHAI</span>
+            <span>CASHEWS · ALMONDS · PISTACHIOS</span>
             <span className="ribbon-sep">✦</span>
-            <span>CALIFORNIAN NUTS & SAFFRON</span>
+            <span>CHOCOLATES · COOKIES · CANDLES</span>
             <span className="ribbon-sep">✦</span>
-            <span>HAND-CAST BRASS DIYAS</span>
+            <span>MINIMUM ORDER 50 PIECES</span>
             <span className="ribbon-sep">✦</span>
-            <span>CORPORATE LOGO EMBOSSING</span>
+            <span>DHOOP CONES & FESTIVE TREATS</span>
             <span className="ribbon-sep">✦</span>
             <span>PAN-INDIA DISPATCH</span>
             <span className="ribbon-sep">✦</span>
-            <span>🪔 BESPOKE FESTIVE HAMPERS</span>
+            <span>🪔 13 DIWALI HAMPERS</span>
             <span className="ribbon-sep">✦</span>
-            <span>PURE GHEE ARTISAN MITHAI</span>
+            <span>CASHEWS · ALMONDS · PISTACHIOS</span>
             <span className="ribbon-sep">✦</span>
-            <span>CALIFORNIAN NUTS & SAFFRON</span>
+            <span>CHOCOLATES · COOKIES · CANDLES</span>
             <span className="ribbon-sep">✦</span>
-            <span>HAND-CAST BRASS DIYAS</span>
+            <span>MINIMUM ORDER 50 PIECES</span>
             <span className="ribbon-sep">✦</span>
-            <span>CORPORATE LOGO EMBOSSING</span>
+            <span>DHOOP CONES & FESTIVE TREATS</span>
             <span className="ribbon-sep">✦</span>
           </div>
         </div>
@@ -614,33 +476,22 @@ export default function App() {
           <span className="section-eyebrow">CURATED FESTIVE ROWS</span>
           <h2 className="section-title">Diwali Collections</h2>
           <p className="section-desc">
-            Explore our curated catalogue presented in continuous horizontal rows.
-            Hover over any product to pause scrolling, and click for full details,
-            inclusions, and direct WhatsApp enquiry.
+            Browse all 13 hampers with their listed inclusions, catalogue prices,
+            and minimum order quantity. Prices may change with availability,
+            order quantity, customisation, and market conditions; the final price
+            will be confirmed when you order.
           </p>
         </div>
 
         {/* Category Row 1: Hampers */}
         <div id="hampers" className="collection-row-anchor">
           <ProductCarouselRow
-            categoryTag="CATEGORY 01"
+            categoryTag="2026 CATALOGUE"
             categoryTitle="Festive Hampers"
-            categorySubtitle="Opulent royal silver thalis, heirloom caskets, and bespoke multi-tier celebration trunks"
+            categorySubtitle="13 hampers · Minimum order 50 pieces each"
             items={HAMPERS}
             onSelectProduct={setActiveProduct}
             reverse={false}
-          />
-        </div>
-
-        {/* Category Row 2: Gifts */}
-        <div id="gifts" className="collection-row-anchor">
-          <ProductCarouselRow
-            categoryTag="CATEGORY 02"
-            categoryTitle="Thoughtful Gifts"
-            categorySubtitle="Artisanal mithai boxes, Belgian couverture selections, sacred brass diyas, and dry fruit caskets"
-            items={GIFTS}
-            onSelectProduct={setActiveProduct}
-            reverse={true}
           />
         </div>
       </section>
@@ -678,7 +529,7 @@ export default function App() {
               <h4>WhatsApp Concierge</h4>
               <p>Instant digital catalog, quotes & sample requests</p>
               <a href={createWhatsAppLink()} target="_blank" rel="noopener noreferrer">
-                +91 98765 43210
+                +91 93304 53857
               </a>
             </div>
 
@@ -686,21 +537,21 @@ export default function App() {
               <span className="contact-item-icon">💼</span>
               <h4>Corporate Desk</h4>
               <p>GST invoices, bulk discount tiers & custom branding</p>
-              <a href="tel:+919876543211">+91 98765 43211</a>
+              <a href="tel:+919876543211">+91 93304 53857</a>
             </div>
 
             <div className="contact-item">
               <span className="contact-item-icon">✉️</span>
               <h4>Email Inquiries</h4>
               <p>Send your corporate gifting requirements</p>
-              <a href="mailto:concierge@thehouseofgifts.in">concierge@thehouseofgifts.in</a>
+              <a href="mailto:houseofgifts.hj@gmail.com">houseofgifts.hj@gmail.com</a>
             </div>
 
             <div className="contact-item">
               <span className="contact-item-icon">📍</span>
               <h4>Dispatch Centers</h4>
               <p>Pan-India logistics to 19,000+ pin codes</p>
-              <span>Mumbai · New Delhi · Bengaluru</span>
+              <span>Kolkatta</span>
             </div>
           </div>
         </div>
@@ -727,7 +578,6 @@ export default function App() {
             <div className="footer-links-group">
               <h5>Catalogue</h5>
               <a href="#hampers">Festive Hampers</a>
-              <a href="#gifts">Thoughtful Gifts</a>
               <a href="#collections">All Collections</a>
             </div>
 
@@ -839,7 +689,7 @@ export default function App() {
               <div className="modal-details-col">
                 <div className="modal-header-meta">
                   <span className="modal-category-label">
-                    {activeProduct.category === "Hampers" ? "Festive Hamper" : "Diwali Gift"} · Edition 2026
+                    Festive Hamper · Edition 2026
                   </span>
                   <h2 className="modal-product-name">{activeProduct.name}</h2>
                 </div>
