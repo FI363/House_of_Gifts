@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import "./App.css";
+import { Analytics } from "@vercel/analytics/react";
 
 /* ─── Types ─────────────────────────────────────────── */
 export type Product = {
@@ -755,6 +756,7 @@ export default function App() {
           </div>
         </div>
       )}
+      <Analytics />
     </div>
   );
 }
