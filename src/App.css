@@ -128,9 +128,11 @@ button {
     opacity: 0.4;
     transform: translateY(0);
   }
+
   50% {
     opacity: 0.85;
   }
+
   100% {
     opacity: 0.5;
     transform: translateY(-6px);
@@ -146,12 +148,43 @@ button {
   align-items: center;
   justify-content: space-between;
   padding: 1.1rem 3.5rem;
-  background: rgba(250, 248, 245, 0.88);
+  background: linear-gradient(180deg,
+      rgba(255, 252, 244, 0.96) 0%,
+      rgba(250, 246, 238, 0.92) 100%);
   backdrop-filter: blur(18px);
-  border-bottom: 1px solid var(--rose-gold-border-subtle);
-  box-shadow: 0 2px 16px rgba(197, 130, 141, 0.05);
+  border-bottom: none;
+  box-shadow:
+    0 2px 28px rgba(197, 160, 89, 0.14),
+    0 4px 36px rgba(197, 130, 141, 0.05);
+  overflow: hidden;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, box-shadow 0.3s ease;
   will-change: transform;
+}
+
+/* Indian-art floral vine trim SVG */
+.header-vine-trim {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 44px;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: linear-gradient(90deg, transparent 0%, black 4%, black 96%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 4%, black 96%, transparent 100%);
+  animation: vineTrimPulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes vineTrimPulse {
+  0% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .site-header--hidden {
@@ -160,9 +193,14 @@ button {
 }
 
 .brand-lockup {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   gap: 0.85rem;
+  background: rgba(253, 249, 241, 0.98);
+  box-shadow: 0 0 24px 14px rgba(253, 249, 241, 0.98);
+  border-radius: 12px;
 }
 
 .brand-crest {
@@ -176,6 +214,7 @@ button {
     filter: drop-shadow(0 0 4px rgba(197, 130, 141, 0.35));
     transform: scale(0.98);
   }
+
   100% {
     filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.55));
     transform: scale(1.02);
@@ -206,9 +245,15 @@ button {
 }
 
 .header-nav {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   gap: 2.4rem;
+  background: rgba(253, 249, 241, 0.98);
+  box-shadow: 0 0 24px 14px rgba(253, 249, 241, 0.98);
+  border-radius: 999px;
+  padding: 0.2rem 0.85rem;
 }
 
 .header-nav a {
@@ -221,7 +266,7 @@ button {
 }
 
 .header-nav a:hover {
-  color: var(--rose-gold-dark);
+  color: var(--gold-dark);
 }
 
 .header-nav a::after {
@@ -231,8 +276,9 @@ button {
   left: 0;
   width: 0;
   height: 1.5px;
-  background: var(--rose-gold);
-  transition: width 0.25s ease;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold-light), var(--gold-dark));
+  box-shadow: 0 0 6px rgba(197, 160, 89, 0.6);
+  transition: width 0.3s ease;
 }
 
 .header-nav a:hover::after {
@@ -240,13 +286,16 @@ button {
 }
 
 .header-whatsapp-btn {
+  position: relative;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
   padding: 0.55rem 1.25rem;
   border-radius: 999px;
-  background: rgba(26, 158, 82, 0.08);
+  background: #ffffff;
   border: 1px solid rgba(26, 158, 82, 0.35);
+  box-shadow: 0 0 20px 10px rgba(253, 249, 241, 0.98), 0 2px 8px rgba(0, 0, 0, 0.03);
   color: #12753a;
   font-size: 0.84rem;
   font-weight: 600;
@@ -258,7 +307,7 @@ button {
   background: var(--whatsapp-green);
   color: #ffffff;
   border-color: var(--whatsapp-green);
-  box-shadow: 0 4px 16px rgba(26, 158, 82, 0.3);
+  box-shadow: 0 4px 16px rgba(26, 158, 82, 0.3), 0 0 20px 10px rgba(253, 249, 241, 0.98);
   transform: translateY(-1px);
 }
 
@@ -269,7 +318,7 @@ button {
 /* ─── HERO SECTION ───────────────────────────────────── */
 .hero {
   position: relative;
-  padding: 5rem 3.5rem 3.5rem;
+  padding: 1.5rem 3.5rem 3.5rem;
   max-width: 1380px;
   margin: 0 auto;
 }
@@ -421,13 +470,11 @@ button {
   width: 108%;
   height: 108%;
   border-radius: 32px;
-  background: radial-gradient(
-    circle,
-    rgba(232, 180, 184, 0.28) 0%,
-    rgba(245, 228, 189, 0.22) 40%,
-    rgba(216, 219, 226, 0.15) 70%,
-    transparent 85%
-  );
+  background: radial-gradient(circle,
+      rgba(232, 180, 184, 0.28) 0%,
+      rgba(245, 228, 189, 0.22) 40%,
+      rgba(216, 219, 226, 0.15) 70%,
+      transparent 85%);
   filter: blur(32px);
   pointer-events: none;
   z-index: 0;
@@ -439,6 +486,7 @@ button {
     opacity: 0.6;
     transform: scale(0.96);
   }
+
   100% {
     opacity: 0.95;
     transform: scale(1.04);
@@ -513,6 +561,79 @@ button {
   box-shadow: var(--shadow-subtle);
 }
 
+/* ─── Hero Carousel Component ────────────────────────── */
+.hero-carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1 / 1.1;
+  margin: 0 auto;
+  perspective: 1200px;
+  z-index: 1;
+}
+
+.hero-carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.hero-carousel-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1.5px solid rgba(197, 130, 141, 0.35);
+  box-shadow: 0 20px 48px rgba(197, 130, 141, 0.12), 0 8px 24px rgba(0, 0, 0, 0.05);
+  background: #ffffff;
+  transition: all 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+  transform: translateX(0) scale(0.8);
+}
+
+.hero-carousel-card.center {
+  transform: translateX(0) scale(1) rotate(0);
+  opacity: 1;
+  z-index: 3;
+  pointer-events: auto;
+}
+
+.hero-carousel-card.left {
+  transform: translateX(-35%) scale(0.85) rotate(-6deg);
+  opacity: 0.95;
+  z-index: 2;
+}
+
+.hero-carousel-card.right {
+  transform: translateX(35%) scale(0.85) rotate(6deg);
+  opacity: 0.95;
+  z-index: 2;
+}
+
+.hero-carousel-card.hidden-left {
+  transform: translateX(-70%) scale(0.7) rotate(-10deg);
+  opacity: 0;
+  z-index: 1;
+}
+
+.hero-carousel-card.hidden-right {
+  transform: translateX(70%) scale(0.7) rotate(10deg);
+  opacity: 0;
+  z-index: 1;
+}
+
+.hero-carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* ─── MARQUEE / RIBBON ───────────────────────────────── */
 .diwali-ribbon {
   width: 100vw;
@@ -550,6 +671,7 @@ button {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -557,15 +679,157 @@ button {
 
 /* ─── COLLECTIONS SECTION (Minimalist Google Carousel Rows) ── */
 .collections-section {
-  padding: 5.5rem 0 3.5rem;
+  padding: 2.5rem 0 3.5rem;
   position: relative;
 }
 
-.section-intro {
-  max-width: 1380px;
-  margin: 0 auto 3.5rem;
-  padding: 0 3.5rem;
-  text-align: center;
+/* Collections Intro Section — Full-Width Diwali */
+.collections-intro-section {
+  width: 100%;
+  margin: 0 0 3rem;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #faf6f0 0%, #f4efe7 50%, #f0e8dc 100%);
+  border-top: 1px solid var(--rose-gold-border);
+  border-bottom: 1px solid var(--rose-gold-border);
+}
+
+.collections-intro-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--rose-gold), var(--gold), var(--rose-gold));
+  z-index: 2;
+}
+
+.intro-section-inner {
+  display: flex;
+  align-items: stretch;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.intro-section-media {
+  flex: 0 0 42%;
+  width: 42%;
+  position: relative;
+  overflow: hidden;
+  background: #0a0706;
+}
+
+.intro-section-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 45%;
+  display: block;
+}
+
+.intro-media-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 70%, rgba(250, 246, 240, 0.6) 100%);
+  pointer-events: none;
+}
+
+.intro-section-text {
+  flex: 1;
+  padding: 3rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.intro-section-text .section-eyebrow {
+  margin-bottom: 0.15rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+}
+
+.intro-section-text .section-title {
+  margin-bottom: 0.4rem;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-family: var(--font-serif);
+  line-height: 1.15;
+}
+
+.intro-section-text .section-desc {
+  margin-bottom: 0.6rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  max-width: 560px;
+}
+
+/* Highlight items */
+.intro-section-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.6rem;
+}
+
+.intro-highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+}
+
+.intro-highlight-icon {
+  flex-shrink: 0;
+  color: var(--gold);
+  font-size: 0.85rem;
+  margin-top: 0.15rem;
+}
+
+.intro-highlight div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.intro-highlight strong {
+  font-size: 0.82rem;
+  font-weight: 650;
+  color: var(--text-pure);
+  letter-spacing: 0.02em;
+}
+
+.intro-highlight span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* CTA Link */
+.intro-section-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.2rem;
+  padding: 0.65rem 1.8rem;
+  background: linear-gradient(135deg, var(--rose-gold-dark) 0%, var(--rose-gold) 100%);
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  width: fit-content;
+  box-shadow: 0 4px 14px rgba(197, 130, 141, 0.2);
+}
+
+.intro-section-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(197, 130, 141, 0.3);
 }
 
 .section-eyebrow {
@@ -597,6 +861,53 @@ button {
   margin-bottom: 4.8rem;
 }
 
+/* Collections Carousel Card — Enclosing Festive Hampers */
+.collections-carousel-card {
+  max-width: 1380px;
+  width: calc(100% - 7rem);
+  margin: 0 auto 4.5rem;
+  padding: 1.8rem 0 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--rose-gold-border);
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(197, 130, 141, 0.06), 0 2px 6px rgba(0, 0, 0, 0.02);
+  position: relative;
+  overflow: hidden;
+}
+
+.collections-carousel-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--rose-gold), var(--gold), var(--rose-gold));
+  z-index: 2;
+}
+
+/* Floral Vine Divider Trim (outside the section before it starts) */
+.section-divider-wrap {
+  max-width: 1380px;
+  width: calc(100% - 7rem);
+  margin: 0 auto 2.6rem;
+  position: relative;
+  height: 44px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-vine-trim {
+  width: 100%;
+  height: 44px;
+  pointer-events: none;
+  display: block;
+  mask-image: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
+}
+
 .carousel-row-wrapper {
   position: relative;
   width: 100%;
@@ -607,9 +918,10 @@ button {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  max-width: 1380px;
-  margin: 0 auto 1.6rem;
-  padding: 0 3.5rem;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto 1.4rem;
+  padding: 0 2.2rem;
 }
 
 .carousel-title-group {
@@ -700,16 +1012,11 @@ button {
   animation: autoScrollTrackReverse 46s linear infinite;
 }
 
-/* Continuous scroll pause on hover */
-.carousel-track--paused,
-.carousel-viewport:hover .carousel-track {
-  animation-play-state: paused !important;
-}
-
 @keyframes autoScrollTrack {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(calc(-100% / 3));
   }
@@ -719,6 +1026,7 @@ button {
   0% {
     transform: translateX(calc(-100% / 3));
   }
+
   100% {
     transform: translateX(0);
   }
@@ -1092,6 +1400,7 @@ button {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -1118,6 +1427,7 @@ button {
     opacity: 0;
     transform: translateY(20px) scale(0.98);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -1135,14 +1445,17 @@ button {
   top: 10px;
   left: 10px;
 }
+
 .diwali-ornament-corner.tr {
   top: 10px;
   right: 10px;
 }
+
 .diwali-ornament-corner.bl {
   bottom: 10px;
   left: 10px;
 }
+
 .diwali-ornament-corner.br {
   bottom: 10px;
   right: 10px;
@@ -1405,8 +1718,15 @@ button {
     padding: 0 1.75rem;
   }
 
-  .section-intro {
-    padding: 0 1.75rem;
+  .collections-carousel-card,
+  .section-divider-wrap {
+    width: calc(100% - 3.5rem);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .intro-section-text {
+    padding: 2.5rem 2rem;
   }
 
   .contact-section {
@@ -1436,10 +1756,39 @@ button {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+    padding: 0.5rem 1.4rem 0;
   }
 
   .carousel-hover-hint {
     display: none;
+  }
+
+  .collections-carousel-card,
+  .section-divider-wrap {
+    width: calc(100% - 2rem);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .intro-section-inner {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .intro-section-media {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 220px;
+  }
+
+  .intro-media-overlay {
+    background: linear-gradient(180deg, transparent 60%, rgba(250, 246, 240, 0.5) 100%);
+  }
+
+  .intro-section-text {
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 2rem 1.4rem;
   }
 
   .catalogue-card {

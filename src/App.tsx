@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import "./App.css";
 import { Analytics } from "@vercel/analytics/react";
+import fiyaVideo from "./assets/fiya.mp4";
 
 /* ─── Types ─────────────────────────────────────────── */
 export type Product = {
@@ -17,7 +18,7 @@ export type Product = {
 };
 
 /* ─── Media Resolver ────────────────────────────────── */
-const productImages = import.meta.glob<string>("./assets/house_media/diwali-hamper-*.jpg", {
+const productImages = import.meta.glob<string>("./assets/house_media/diwali-hamper-*.webp", {
   eager: true,
   query: "?url",
   import: "default",
@@ -36,7 +37,7 @@ const HAMPERS: Product[] = [
     tag: "Diwali Hamper",
     description: "Cashews, almonds, cookies, an urli candle, and chocolates.",
     details: ["200g cashews", "200g almonds", "Cookies", "Urli candle", "6 chocolates"],
-    image: getImg("diwali-hamper-01.jpg"),
+    image: getImg("diwali-hamper-01.webp"),
   },
   {
     id: "h-2",
@@ -48,7 +49,7 @@ const HAMPERS: Product[] = [
     tag: "Diwali Hamper",
     description: "Cashews, almonds, a candle, chocolates, and dhoop cones.",
     details: ["100g cashews", "100g almonds", "Candle", "6 chocolates", "Dhoop cones"],
-    image: getImg("diwali-hamper-02.jpg"),
+    image: getImg("diwali-hamper-02.webp"),
   },
   {
     id: "h-3",
@@ -60,7 +61,7 @@ const HAMPERS: Product[] = [
     tag: "Diwali Hamper",
     description: "Cashews, almonds, a candle, and chocolates.",
     details: ["200g cashews", "200g almonds", "Candle", "6 chocolates"],
-    image: getImg("diwali-hamper-03.jpg"),
+    image: getImg("diwali-hamper-03.webp"),
   },
   {
     id: "h-4",
@@ -72,7 +73,7 @@ const HAMPERS: Product[] = [
     tag: "Diwali Hamper",
     description: "Cashews, almonds, and a candle.",
     details: ["200g cashews", "200g almonds", "Candle"],
-    image: getImg("diwali-hamper-04.jpg"),
+    image: getImg("diwali-hamper-04.webp"),
   },
   {
     id: "h-5",
@@ -84,7 +85,7 @@ const HAMPERS: Product[] = [
     tag: "Diwali Hamper",
     description: "Cashews, almonds, and a candle.",
     details: ["200g cashews", "200g almonds", "Candle"],
-    image: getImg("diwali-hamper-05.jpg"),
+    image: getImg("diwali-hamper-05.webp"),
   },
   {
     id: "h-6",
@@ -96,7 +97,7 @@ const HAMPERS: Product[] = [
     tag: "Diwali Hamper",
     description: "Cashews, almonds, a candle, and chocolates.",
     details: ["200g cashews", "200g almonds", "Candle", "8 chocolates"],
-    image: getImg("diwali-hamper-06.jpg"),
+    image: getImg("diwali-hamper-06.webp"),
   },
   {
     id: "h-7",
@@ -108,7 +109,7 @@ const HAMPERS: Product[] = [
     tag: "Diwali Hamper",
     description: "Cashews, almonds, a candle, and chocolates.",
     details: ["200g cashews", "200g almonds", "Candle", "8 chocolates"],
-    image: getImg("diwali-hamper-07.jpg"),
+    image: getImg("diwali-hamper-07.webp"),
   },
   {
     id: "h-8",
@@ -120,7 +121,7 @@ const HAMPERS: Product[] = [
     tag: "Diwali Hamper",
     description: "Cashews, almonds, pistachios, and chocolates.",
     details: ["200g cashews", "200g almonds", "200g pistachios", "6 chocolates"],
-    image: getImg("diwali-hamper-08.jpg"),
+    image: getImg("diwali-hamper-08.webp"),
   },
   {
     id: "h-9",
@@ -132,7 +133,7 @@ const HAMPERS: Product[] = [
     tag: "Diwali Hamper",
     description: "Cashews, almonds, pistachios, and chocolates.",
     details: ["200g cashews", "200g almonds", "200g pistachios", "6 chocolates"],
-    image: getImg("diwali-hamper-09.jpg"),
+    image: getImg("diwali-hamper-09.webp"),
   },
   {
     id: "h-10",
@@ -144,7 +145,7 @@ const HAMPERS: Product[] = [
     tag: "Diwali Hamper",
     description: "Cashews, almonds, an urli candle, dhoop cones, and chocolates.",
     details: ["200g cashews", "200g almonds", "Urli candle", "Dhoop cones", "6 chocolates"],
-    image: getImg("diwali-hamper-10.jpg"),
+    image: getImg("diwali-hamper-10.webp"),
   },
   {
     id: "h-11",
@@ -156,7 +157,7 @@ const HAMPERS: Product[] = [
     tag: "Diwali Hamper",
     description: "Cashews, almonds, and a candle.",
     details: ["200g cashews", "200g almonds", "Candle"],
-    image: getImg("diwali-hamper-11.jpg"),
+    image: getImg("diwali-hamper-11.webp"),
   },
   {
     id: "h-12",
@@ -168,7 +169,7 @@ const HAMPERS: Product[] = [
     tag: "Diwali Hamper",
     description: "Cashews, almonds, pistachios, and chocolates.",
     details: ["200g cashews", "200g almonds", "200g pistachios", "6 chocolates"],
-    image: getImg("diwali-hamper-12.jpg"),
+    image: getImg("diwali-hamper-12.webp"),
   },
   {
     id: "h-13",
@@ -180,7 +181,7 @@ const HAMPERS: Product[] = [
     tag: "Diwali Hamper",
     description: "Cashews, almonds, pistachios, and chocolates.",
     details: ["200g cashews", "200g almonds", "200g pistachios", "6 chocolates"],
-    image: getImg("diwali-hamper-13.jpg"),
+    image: getImg("diwali-hamper-13.webp"),
   },
 ];
 
@@ -193,6 +194,67 @@ function createWhatsAppLink(product?: Product) {
     : "Hello The House of Gifts! I am browsing your Diwali 2026 Catalogue and would like to enquire about festive gifting options.";
   const params = new URLSearchParams({ phone: WHATSAPP_PHONE, text: message });
   return `https://api.whatsapp.com/send?${params.toString()}`;
+}
+
+/* ─── Hero Carousel Component ────────────────────────── */
+function HeroCarousel({
+  items,
+  onSelectProduct,
+}: {
+  items: Product[];
+  onSelectProduct: (product: Product) => void;
+}) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % items.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [items.length]);
+
+  return (
+    <div className="hero-carousel-container">
+      <div className="hero-carousel-track">
+        {items.map((item, idx) => {
+          let position = "hidden";
+          const diff = (idx - currentIndex + items.length) % items.length;
+          if (diff === 0) position = "center";
+          else if (diff === 1) position = "right";
+          else if (diff === items.length - 1) position = "left";
+          else if (diff > 1 && diff <= items.length / 2) position = "hidden-right";
+          else position = "hidden-left";
+
+          return (
+            <div
+              key={item.id}
+              className={`hero-carousel-card ${position}`}
+              role="button"
+              tabIndex={position === "center" ? 0 : -1}
+              aria-hidden={position !== "center"}
+              aria-label={`View details for ${item.name}`}
+              onClick={() => onSelectProduct(item)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  onSelectProduct(item);
+                }
+              }}
+            >
+              <img src={item.image} alt={item.name} className="hero-carousel-img" />
+              <div className="hero-image-overlay">
+                <span className="hero-caption-title">{item.name}</span>
+                <span className="hero-caption-sub">From {item.price} · {item.moq}</span>
+              </div>
+              <div className="hero-floating-badge">
+                <span>🪔 Curated for Diwali</span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
 /* ─── Carousel Component ─────────────────────────────── */
@@ -212,7 +274,6 @@ function ProductCarouselRow({
   reverse?: boolean;
 }) {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [isPaused, setIsPaused] = useState(false);
 
   // Duplicate items for a seamless continuous scroll loop
   const duplicatedItems = [...items, ...items, ...items];
@@ -237,7 +298,7 @@ function ProductCarouselRow({
           <p className="carousel-category-subtitle">{categorySubtitle}</p>
         </div>
 
-        {/* Carousel controls (pause indicator & manual scroll arrows) */}
+        {/* Carousel controls and manual scroll arrows */}
         <div className="carousel-controls">
           <button
             className="carousel-control-btn"
@@ -254,23 +315,14 @@ function ProductCarouselRow({
             →
           </button>
           <span className="carousel-hover-hint">
-            {isPaused ? "⏸ Paused (Hovering)" : "▶ Auto-scrolling · Hover to pause"}
+            Auto-scrolling · Select a card for details
           </span>
         </div>
       </div>
 
       {/* Horizontal Continuous Auto-Scroll Track */}
-      <div
-        className="carousel-viewport"
-        ref={scrollRef}
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
-        <div
-          className={`carousel-track ${reverse ? "carousel-track--reverse" : ""} ${
-            isPaused ? "carousel-track--paused" : ""
-          }`}
-        >
+      <div className="carousel-viewport" ref={scrollRef}>
+        <div className={`carousel-track ${reverse ? "carousel-track--reverse" : ""}`}>
           {duplicatedItems.map((product, idx) => (
             <article
               key={`${product.id}-${idx}`}
@@ -377,6 +429,85 @@ export default function App() {
           <span className="whatsapp-icon">💬</span>
           <span>WhatsApp Enquiry</span>
         </a>
+        {/* ─── Diwali Floral Vine Trim ───────────────── */}
+        <svg
+          className="header-vine-trim"
+          viewBox="0 0 1200 44"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          preserveAspectRatio="none"
+        >
+          <g stroke="rgb(197,160,89)" fill="none">
+            {/* Main horizontal vine */}
+            <path strokeWidth="1.5" strokeOpacity="0.8" d="M0,40 L1200,40" />
+
+            {/* LEFT CURL 1 — sweeps up and rightward (inward) */}
+            <path strokeWidth="1.1" d="M120,40 C122,28 136,14 150,18 C164,22 162,35 150,38" />
+            <g transform="translate(152,16)">
+              <ellipse strokeWidth="0.8" ry="3.5" rx="1.5" />
+              <ellipse strokeWidth="0.8" rx="3.5" ry="1.5" />
+              <circle r="1.8" fill="rgb(197,160,89)" />
+            </g>
+            <path strokeWidth="0.7" fill="rgb(197,160,89)" fillOpacity="0.22" d="M189,40 C192,32 204,33 201,40Z" />
+
+            {/* LEFT CURL 2 */}
+            <path strokeWidth="1.1" d="M290,40 C292,28 306,14 320,18 C334,22 332,35 320,38" />
+            <g transform="translate(322,16)">
+              <ellipse strokeWidth="0.8" ry="3.5" rx="1.5" />
+              <ellipse strokeWidth="0.8" rx="3.5" ry="1.5" />
+              <circle r="1.8" fill="rgb(197,160,89)" />
+            </g>
+            <path strokeWidth="0.7" fill="rgb(197,160,89)" fillOpacity="0.22" d="M357,40 C360,32 372,33 369,40Z" />
+
+            {/* LEFT CURL 3 */}
+            <path strokeWidth="1.1" d="M458,40 C460,28 474,14 488,18 C502,22 500,35 488,38" />
+            <g transform="translate(490,16)">
+              <ellipse strokeWidth="0.8" ry="3.5" rx="1.5" />
+              <ellipse strokeWidth="0.8" rx="3.5" ry="1.5" />
+              <circle r="1.8" fill="rgb(197,160,89)" />
+            </g>
+            <path strokeWidth="0.7" fill="rgb(197,160,89)" fillOpacity="0.22" d="M525,40 C528,32 540,33 537,40Z" />
+
+            {/* CENTER LOTUS */}
+            <g transform="translate(600,34)">
+              <ellipse strokeWidth="0.9" cy="-8" rx="2.5" ry="6" />
+              <ellipse strokeWidth="0.9" cy="-8" rx="2.5" ry="6" transform="rotate(60)" />
+              <ellipse strokeWidth="0.9" cy="-8" rx="2.5" ry="6" transform="rotate(120)" />
+              <ellipse strokeWidth="0.9" cy="-8" rx="2.5" ry="6" transform="rotate(180)" />
+              <ellipse strokeWidth="0.9" cy="-8" rx="2.5" ry="6" transform="rotate(240)" />
+              <ellipse strokeWidth="0.9" cy="-8" rx="2.5" ry="6" transform="rotate(300)" />
+              <circle r="3.5" fill="rgb(197,160,89)" />
+              <circle r="1.8" fill="rgb(245,228,189)" />
+            </g>
+
+            {/* RIGHT CURL 3 — sweeps up and leftward (inward) */}
+            <path strokeWidth="0.7" fill="rgb(197,160,89)" fillOpacity="0.22" d="M663,40 C660,32 648,33 651,40Z" />
+            <path strokeWidth="1.1" d="M742,40 C740,28 726,14 712,18 C698,22 700,35 712,38" />
+            <g transform="translate(710,16)">
+              <ellipse strokeWidth="0.8" ry="3.5" rx="1.5" />
+              <ellipse strokeWidth="0.8" rx="3.5" ry="1.5" />
+              <circle r="1.8" fill="rgb(197,160,89)" />
+            </g>
+
+            {/* RIGHT CURL 2 */}
+            <path strokeWidth="0.7" fill="rgb(197,160,89)" fillOpacity="0.22" d="M843,40 C840,32 828,33 831,40Z" />
+            <path strokeWidth="1.1" d="M910,40 C908,28 894,14 880,18 C866,22 868,35 880,38" />
+            <g transform="translate(878,16)">
+              <ellipse strokeWidth="0.8" ry="3.5" rx="1.5" />
+              <ellipse strokeWidth="0.8" rx="3.5" ry="1.5" />
+              <circle r="1.8" fill="rgb(197,160,89)" />
+            </g>
+
+            {/* RIGHT CURL 1 */}
+            <path strokeWidth="0.7" fill="rgb(197,160,89)" fillOpacity="0.22" d="M1011,40 C1008,32 996,33 999,40Z" />
+            <path strokeWidth="1.1" d="M1080,40 C1078,28 1064,14 1050,18 C1036,22 1038,35 1050,38" />
+            <g transform="translate(1048,16)">
+              <ellipse strokeWidth="0.8" ry="3.5" rx="1.5" />
+              <ellipse strokeWidth="0.8" rx="3.5" ry="1.5" />
+              <circle r="1.8" fill="rgb(197,160,89)" />
+            </g>
+          </g>
+        </svg>
       </header>
 
       {/* ─── HERO SECTION ─────────────────────────────── */}
@@ -434,20 +565,7 @@ export default function App() {
           {/* Strong Diwali Hero Visual */}
           <div className="hero-visual-frame">
             <div className="hero-image-aura" aria-hidden="true" />
-            <div className="hero-image-container">
-              <img
-                src={getImg("diwali-hamper-01.jpg")}
-                alt="Hamper 1 with cashews, almonds, cookies, an urli candle, and chocolates"
-                className="hero-main-img"
-              />
-              <div className="hero-image-overlay">
-                <span className="hero-caption-title">Hamper 1</span>
-                <span className="hero-caption-sub">From ₹650 · Minimum 50 pieces</span>
-              </div>
-              <div className="hero-floating-badge">
-                <span>🪔 Curated for Diwali</span>
-              </div>
-            </div>
+            <HeroCarousel items={HAMPERS} onSelectProduct={setActiveProduct} />
           </div>
         </div>
 
@@ -482,19 +600,68 @@ export default function App() {
 
       {/* ─── COLLECTIONS SECTION ───────────────────────── */}
       <section className="collections-section" id="collections">
-        <div className="section-intro">
-          <span className="section-eyebrow">CURATED FESTIVE ROWS</span>
-          <h2 className="section-title">Diwali Collections</h2>
-          <p className="section-desc">
-            Browse all 13 hampers with their listed inclusions, catalogue prices,
-            and minimum order quantity. Prices may change with availability,
-            order quantity, customisation, and market conditions; the final price
-            will be confirmed when you order.
-          </p>
+        {/* ─── Collections Intro Section ────────────────── */}
+        <div className="collections-intro-section">
+          <div className="intro-section-inner">
+            {/* Left side: Diwali video */}
+            <div className="intro-section-media">
+              <video
+                src={fiyaVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="intro-section-video"
+                aria-label="Diwali decorative flame video"
+              />
+              <div className="intro-media-overlay" aria-hidden="true" />
+            </div>
+            {/* Right side: Text content */}
+            <div className="intro-section-text">
+              <span className="section-eyebrow">CURATED FESTIVE ROWS</span>
+              <h2 className="section-title">Diwali Collections</h2>
+              <p className="section-desc">
+                Browse all 13 hampers with their listed inclusions, catalogue prices,
+                and minimum order quantity. Prices may change with availability,
+                order quantity, customisation, and market conditions; the final price
+                will be confirmed when you order.
+              </p>
+
+              <div className="intro-section-highlights">
+                <div className="intro-highlight">
+                  <span className="intro-highlight-icon">✦</span>
+                  <div>
+                    <strong>Premium Dry Fruits</strong>
+                    <span>Hand-selected cashews, almonds & pistachios sourced from trusted suppliers</span>
+                  </div>
+                </div>
+                <div className="intro-highlight">
+                  <span className="intro-highlight-icon">✦</span>
+                  <div>
+                    <strong>Artisan Candles & Diyas</strong>
+                    <span>Handcrafted urli candles and traditional diyas to illuminate celebrations</span>
+                  </div>
+                </div>
+                <div className="intro-highlight">
+                  <span className="intro-highlight-icon">✦</span>
+                  <div>
+                    <strong>Corporate Customisation</strong>
+                    <span>Add your company logo, personalised notes & branded packaging</span>
+                  </div>
+                </div>
+              </div>
+
+              <a href="#hampers" className="intro-section-cta">
+                Explore Hampers ↓
+              </a>
+            </div>
+          </div>
         </div>
 
-        {/* Category Row 1: Hampers */}
-        <div id="hampers" className="collection-row-anchor">
+        {/* Category Row 1: Hampers Card */}
+        <div id="hampers" className="collection-row-anchor collections-carousel-card">
+
+
           <ProductCarouselRow
             categoryTag="2026 CATALOGUE"
             categoryTitle="Festive Hampers"
@@ -535,7 +702,22 @@ export default function App() {
 
           <div className="contact-grid">
             <div className="contact-item">
-              <span className="contact-item-icon">📱</span>
+              <span className="contact-item-icon">
+                <svg viewBox="0 0 48 48" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Diya base */}
+                  <ellipse cx="24" cy="36" rx="14" ry="5" fill="#c5a059" opacity="0.85" />
+                  <ellipse cx="24" cy="36" rx="10" ry="3.5" fill="#f5e4bd" opacity="0.6" />
+                  {/* Diya bowl */}
+                  <path d="M12,36 Q14,28 24,26 Q34,28 36,36 Z" fill="#c5a059" />
+                  <path d="M14,35 Q16,29 24,27.5 Q32,29 34,35 Z" fill="#f5e4bd" opacity="0.5" />
+                  {/* Flame */}
+                  <path d="M24,26 Q21,18 24,10 Q27,18 24,26Z" fill="#e8a838" />
+                  <path d="M24,24 Q22.5,19 24,13 Q25.5,19 24,24Z" fill="#f5d76e" />
+                  <ellipse cx="24" cy="12" rx="2.5" ry="4" fill="#ffe8a0" opacity="0.7" />
+                  {/* Glow */}
+                  <circle cx="24" cy="16" r="6" fill="#f5d76e" opacity="0.15" />
+                </svg>
+              </span>
               <h4>WhatsApp Concierge</h4>
               <p>Instant digital catalog, quotes & sample requests</p>
               <a href={createWhatsAppLink()} target="_blank" rel="noopener noreferrer">
@@ -544,7 +726,21 @@ export default function App() {
             </div>
 
             <div className="contact-item">
-              <span className="contact-item-icon">📸</span>
+              <span className="contact-item-icon">
+                <svg viewBox="0 0 48 48" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Lotus / Rangoli */}
+                  <g transform="translate(24,26)">
+                    <ellipse cy="-10" rx="3.5" ry="9" fill="#c5828d" opacity="0.7" />
+                    <ellipse cy="-10" rx="3.5" ry="9" fill="#c5828d" opacity="0.7" transform="rotate(60)" />
+                    <ellipse cy="-10" rx="3.5" ry="9" fill="#c5828d" opacity="0.7" transform="rotate(120)" />
+                    <ellipse cy="-10" rx="3.5" ry="9" fill="#c5828d" opacity="0.7" transform="rotate(180)" />
+                    <ellipse cy="-10" rx="3.5" ry="9" fill="#c5828d" opacity="0.7" transform="rotate(240)" />
+                    <ellipse cy="-10" rx="3.5" ry="9" fill="#c5828d" opacity="0.7" transform="rotate(300)" />
+                    <circle r="5" fill="#c5a059" />
+                    <circle r="2.8" fill="#f5e4bd" />
+                  </g>
+                </svg>
+              </span>
               <h4>Instagram</h4>
               <p>Follow us for gifting inspiration & updates</p>
               <a
@@ -557,17 +753,45 @@ export default function App() {
             </div>
 
             <div className="contact-item">
-              <span className="contact-item-icon">✉️</span>
+              <span className="contact-item-icon">
+                <svg viewBox="0 0 48 48" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Festive envelope */}
+                  <rect x="6" y="14" width="36" height="24" rx="3" fill="#c5a059" opacity="0.85" />
+                  <rect x="8" y="16" width="32" height="20" rx="2" fill="#f5e4bd" opacity="0.6" />
+                  <path d="M6,14 L24,30 L42,14" stroke="#c5a059" strokeWidth="2" fill="none" />
+                  <path d="M6,38 L18,26" stroke="#c5a059" strokeWidth="1.2" opacity="0.5" />
+                  <path d="M42,38 L30,26" stroke="#c5a059" strokeWidth="1.2" opacity="0.5" />
+                  {/* Small sparkle on top */}
+                  <path d="M24,10 L25,13 L28,14 L25,15 L24,18 L23,15 L20,14 L23,13 Z" fill="#e8a838" opacity="0.8" />
+                </svg>
+              </span>
               <h4>Email Inquiries</h4>
               <p>Send your corporate gifting requirements</p>
               <a href="mailto:houseofgifts.hj@gmail.com">houseofgifts.hj@gmail.com</a>
             </div>
 
             <div className="contact-item">
-              <span className="contact-item-icon">📍</span>
+              <span className="contact-item-icon">
+                <svg viewBox="0 0 48 48" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Festive lantern */}
+                  <line x1="24" y1="4" x2="24" y2="10" stroke="#c5a059" strokeWidth="1.5" />
+                  <rect x="20" y="8" width="8" height="3" rx="1" fill="#c5a059" />
+                  {/* Lantern body */}
+                  <path d="M16,11 Q14,24 18,36 L30,36 Q34,24 32,11 Z" fill="#c5a059" opacity="0.85" />
+                  <path d="M18,13 Q16.5,24 19,34 L29,34 Q31.5,24 30,13 Z" fill="#f5e4bd" opacity="0.5" />
+                  {/* Inner glow */}
+                  <ellipse cx="24" cy="23" rx="5" ry="8" fill="#ffe8a0" opacity="0.4" />
+                  {/* Flame inside */}
+                  <path d="M24,27 Q22,22 24,17 Q26,22 24,27Z" fill="#e8a838" opacity="0.9" />
+                  <path d="M24,25 Q23,22 24,19 Q25,22 24,25Z" fill="#f5d76e" />
+                  {/* Base */}
+                  <rect x="17" y="36" width="14" height="3" rx="1" fill="#c5a059" />
+                  <ellipse cx="24" cy="40" rx="8" ry="2" fill="#c5a059" opacity="0.3" />
+                </svg>
+              </span>
               <h4>Dispatch Centers</h4>
               <p>Pan-India logistics to 19,000+ pin codes</p>
-              <span>Kolkatta</span>
+              <span>Kolkata</span>
             </div>
           </div>
         </div>
@@ -575,6 +799,87 @@ export default function App() {
 
       {/* ─── FOOTER ────────────────────────────────────── */}
       <footer className="site-footer">
+        {/* Floral Vine Divider Trim */}
+        <div className="section-divider-wrap footer-vine-divider">
+          <svg
+            className="section-vine-trim"
+            viewBox="0 0 1200 44"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            preserveAspectRatio="none"
+          >
+            <g stroke="rgb(197,160,89)" fill="none">
+              <path strokeWidth="1.5" strokeOpacity="0.8" d="M0,40 L1200,40" />
+
+              {/* LEFT CURL 1 */}
+              <path strokeWidth="1.1" d="M120,40 C122,28 136,14 150,18 C164,22 162,35 150,38" />
+              <g transform="translate(152,16)">
+                <ellipse strokeWidth="0.8" ry="3.5" rx="1.5" />
+                <ellipse strokeWidth="0.8" rx="3.5" ry="1.5" />
+                <circle r="1.8" fill="rgb(197,160,89)" />
+              </g>
+              <path strokeWidth="0.7" fill="rgb(197,160,89)" fillOpacity="0.22" d="M189,40 C192,32 204,33 201,40Z" />
+
+              {/* LEFT CURL 2 */}
+              <path strokeWidth="1.1" d="M290,40 C292,28 306,14 320,18 C334,22 332,35 320,38" />
+              <g transform="translate(322,16)">
+                <ellipse strokeWidth="0.8" ry="3.5" rx="1.5" />
+                <ellipse strokeWidth="0.8" rx="3.5" ry="1.5" />
+                <circle r="1.8" fill="rgb(197,160,89)" />
+              </g>
+              <path strokeWidth="0.7" fill="rgb(197,160,89)" fillOpacity="0.22" d="M357,40 C360,32 372,33 369,40Z" />
+
+              {/* LEFT CURL 3 */}
+              <path strokeWidth="1.1" d="M460,40 C462,28 476,14 490,18 C504,22 502,35 490,38" />
+              <g transform="translate(492,16)">
+                <ellipse strokeWidth="0.8" ry="3.5" rx="1.5" />
+                <ellipse strokeWidth="0.8" rx="3.5" ry="1.5" />
+                <circle r="1.8" fill="rgb(197,160,89)" />
+              </g>
+              <path strokeWidth="0.7" fill="rgb(197,160,89)" fillOpacity="0.22" d="M527,40 C530,32 542,33 539,40Z" />
+
+              {/* CENTER LOTUS */}
+              <g transform="translate(600,34)">
+                <ellipse strokeWidth="0.9" cy="-8" rx="2.5" ry="6" />
+                <ellipse strokeWidth="0.9" cy="-8" rx="2.5" ry="6" transform="rotate(60)" />
+                <ellipse strokeWidth="0.9" cy="-8" rx="2.5" ry="6" transform="rotate(120)" />
+                <ellipse strokeWidth="0.9" cy="-8" rx="2.5" ry="6" transform="rotate(180)" />
+                <ellipse strokeWidth="0.9" cy="-8" rx="2.5" ry="6" transform="rotate(240)" />
+                <ellipse strokeWidth="0.9" cy="-8" rx="2.5" ry="6" transform="rotate(300)" />
+                <circle r="3.5" fill="rgb(197,160,89)" />
+                <circle r="1.8" fill="rgb(245,228,189)" />
+              </g>
+
+              {/* RIGHT CURL 3 */}
+              <path strokeWidth="0.7" fill="rgb(197,160,89)" fillOpacity="0.22" d="M663,40 C660,32 648,33 651,40Z" />
+              <path strokeWidth="1.1" d="M742,40 C740,28 726,14 712,18 C698,22 700,35 712,38" />
+              <g transform="translate(710,16)">
+                <ellipse strokeWidth="0.8" ry="3.5" rx="1.5" />
+                <ellipse strokeWidth="0.8" rx="3.5" ry="1.5" />
+                <circle r="1.8" fill="rgb(197,160,89)" />
+              </g>
+
+              {/* RIGHT CURL 2 */}
+              <path strokeWidth="0.7" fill="rgb(197,160,89)" fillOpacity="0.22" d="M843,40 C840,32 828,33 831,40Z" />
+              <path strokeWidth="1.1" d="M910,40 C908,28 894,14 880,18 C866,22 868,35 880,38" />
+              <g transform="translate(878,16)">
+                <ellipse strokeWidth="0.8" ry="3.5" rx="1.5" />
+                <ellipse strokeWidth="0.8" rx="3.5" ry="1.5" />
+                <circle r="1.8" fill="rgb(197,160,89)" />
+              </g>
+
+              {/* RIGHT CURL 1 */}
+              <path strokeWidth="0.7" fill="rgb(197,160,89)" fillOpacity="0.22" d="M1011,40 C1008,32 996,33 999,40Z" />
+              <path strokeWidth="1.1" d="M1080,40 C1078,28 1064,14 1050,18 C1036,22 1038,35 1050,38" />
+              <g transform="translate(1048,16)">
+                <ellipse strokeWidth="0.8" ry="3.5" rx="1.5" />
+                <ellipse strokeWidth="0.8" rx="3.5" ry="1.5" />
+                <circle r="1.8" fill="rgb(197,160,89)" />
+              </g>
+            </g>
+          </svg>
+        </div>
+
         <div className="footer-top">
           <div className="footer-brand-block">
             <a href="#hero" className="brand-lockup">
